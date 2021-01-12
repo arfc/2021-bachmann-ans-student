@@ -1,4 +1,4 @@
-\documentclass[11pt, letterpaper]{article}
+\documentclass[12pt, letterpaper]{article}
 \usepackage[utf8]{inputenc}
 \usepackage{caption} % for table captions
 \usepackage{amsmath} % for multi - line equations and piecewises
@@ -10,6 +10,7 @@
 \usepackage{enumitem} % for a) b) c) lists
 \newcommand{\Cyclus}{\textsc{Cyclus}\xspace} %
 \newcommand{\Cycamore}{\textsc{Cycamore}\xspace} %
+
 \usepackage{tabularx}
 \usepackage{color}
 \usepackage{setspace}
@@ -25,11 +26,27 @@
 \graphicspath{{images /}}
 \usepackage[acronym,toc]{glossaries}
 \input{../acros}
+\usepackage[margin=1in]{geometry}
+\usepackage{authblk}
+\makeatletter
+\patchcmd{\@maketitle}{\LARGE \@title}{\fontsize{12}{19.2}\selectfont\@title}{}{}
+\makeatother
 
-\title{Title
+\renewcommand\Authfont{\fontsize{12}{14.4}\selectfont}
+\renewcommand\Affilfont{\fontsize{12}{10.8}\itshape}
+\setlength{\parindent}{0.25in}
+
+\title{\textbf{Analysis of Enriched Urnaium Supply for Transition to 
+			   Advanced Reactors}
         \\ \vspace{0.5em}  Poster Abstract}
-\author{Authors}
+\author[1]{Amanda M. Bachmann}
+\author[2]{Kathryn Huff}
 
+\affil[1]{\textit{Advanced Reactors and Fuel Cycles, University of Illinois at Urbana-Champaign, Department of Nuclear, Plasma, and Radiological Engineering,
+Urbana-Champaign, IL, amandab7@illinois.edu}}
+\affil[2]{\textit{Assistant Professor, University of Illinois at Urbana-Champaign, Department of Nuclear, Plasma, and Radiological Engineering , Urbana-Champaign, IL, 118 Talbot Laboratory, kdhuff@illinois.edu
+}}
+\date{}
 
 \begin{document}
 	\maketitle
@@ -40,11 +57,8 @@
 
 %Put your content here.
 
-This sentence is used as an example citation call ~\cite{call_tag}.
-
-Example acronym call \gls{SNF}
 
 \bibliographystyle{unsrt}
-\bibliography{bibliography.bib}
+\bibliography{bibliography}
 
 \end{document}
