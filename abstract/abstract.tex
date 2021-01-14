@@ -26,20 +26,23 @@
 \graphicspath{{images /}}
 \usepackage[acronym,toc]{glossaries}
 \input{../acros}
-\usepackage[margin=1in]{geometry}
+\usepackage[margin=1in, voffset=0in]{geometry}
 \usepackage{authblk}
 \makeatletter
 \patchcmd{\@maketitle}{\LARGE \@title}{\fontsize{12}{19.2}\selectfont\@title}{}{}
 \makeatother
 
+
 \renewcommand\Authfont{\fontsize{12}{14.4}\selectfont}
 \renewcommand\Affilfont{\fontsize{12}{10.8}\itshape}
 \setlength{\parindent}{0.25in}
 
-\title{\textbf{Enriched Uranium Supply Requirements for the Transition to 
-			   Advanced Reactors}}
+
+
+\title{{\textbf{Enriched Uranium Supply Requirements for the Transition to 
+			   Advanced Reactors}}}
 \author[1]{Amanda M. Bachmann}
-\author[2]{Kathryn Huff}
+\author[2]{Kathryn Huff }
 
 \affil[1]{\textit{Advanced Reactors and Fuel Cycles, University of Illinois 
 at Urbana-Champaign, Department of Nuclear, Plasma, and Radiological 
@@ -48,15 +51,13 @@ Engineering, Urbana-Champaign, IL, amandab7@illinois.edu}}
 Urbana-Champaign, Department of Nuclear, Plasma, and Radiological 
 Engineering , Urbana-Champaign, IL, 118 Talbot Laboratory, 
 kdhuff@illinois.edu
-}}
+} \vspace{-30pt}}
 \date{}
+
 
 \begin{document}
 	\maketitle
-	\hrule
-
-\section * {}
-%\doublespacing
+	
 
 %Put your content here.
 Current nuclear reactors employed in the United States use \gls{LEU} fuel  
