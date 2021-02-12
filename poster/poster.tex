@@ -72,6 +72,12 @@
 \usepackage{xspace}
 \usepackage{amsmath}
 \usepackage{exscale}
+\usepackage{tikz}
+\usetikzlibrary{shapes.geometric, arrows}
+\usetikzlibrary{positioning, arrows, decorations, shapes}
+
+\tikzstyle{facility} = [rectangle, rounded corners, minimum width=2cm, minimum height=0.75cm,text centered, draw=black, fill=blue!30]
+\tikzstyle{arrow} = [thick,->,>=stealth]
 
 \setbeamertemplate{bibliography item}[text]
 
@@ -86,7 +92,7 @@
         \raisebox{\dimexpr-\height+\baselineskip}[0pt][0pt]
           {\includegraphics[height=2.5\baselineskip]{UIUC_Logo}}% Left logo
       }\hfill
-      \makebox[0pt]{Title}%
+      \makebox[0pt]{Enriched Uranium Supply Requirements}%
       \hfill\makebox[0pt][r]{%
         \raisebox{\dimexpr-\height+\baselineskip}[0pt][0pt]
           {\includegraphics[height=3.3\baselineskip]{arfc_atom}}% Right logo
@@ -94,12 +100,12 @@
     }%
   }
   % To make a title with two lines, remove the "%" from the following two lines 
-  %{First line of title}
-  %{Second line of title}
+  {Enriched Uranium Supply Requirements}
+  {for the Transition to Advanced Reactors}
   {\vspace{1cm}}
   } % Poster title
 
-\author{\textbf{Primary Author}, Other Authors}
+\author{\textbf{Amanda M. Bachmann}, Kathryn D. Huff}
 \institute{University of Illinios at Urbana-Champaign, Department of Nuclear, Plasma, and Radiological Engineering, Urbana, IL 61801}
 %----------------------------------------------------------------------------------------
 
@@ -125,29 +131,32 @@
 
 \begin{block}{Introduction}
 
-\textbf{Sub-title}
+All \gls{LWR} in the current fleet of reactors dpeloyed in the United States
+similar forms of \gls{LEU} enriched below 5\% $^{235}$U. Many of the 
+new reactor designs, namely those of Microreactors and \gls{SMR}, will 
+use \gls{LEU} fuel enriched between 5-20\% $^{235}$U. This difference in 
+enrichment level will require additional resources to fabricate compared to 
+the fuel for current reactors. 
 
-Example un-ordered list: 
-\begin{itemize}
-	\item Example acronym call \gls{SNF} with an example citation 
-	    \cite{call_tag_article}
-	\item second bullet point with second use of an acronym \gls{SNF}
-\end{itemize}
+To meet these requirements, the U.S. \gls{DOE} has proposed two methods to 
+fabricate uranium at these higher enrichment levels: recovery and 
+downblending of \gls{HEU} or enriching natural uranium to the required 
+level \cite{griffith_overview_2020}. Each of these methods have limitations. 
+Recovery and downblending is limited by the existing physical supply of 
+\gls{HEU} and downblending capacity. Enrichment of natural uranium is 
+limited by centrifuge capacity, in terms of \gls{SWU}. 
 
-\vspace{0.7em}
-\textbf{Sub-title}
-
-More text relating to this section, and a third use of the same acronym
- \gls{SNF}. 
-
-These goals will be achieved by: 
-\begin{itemize}
-	\item Step to goal 
-	\item Step to goal 
-\end{itemize}
+This work investigates the supply of enriched uranium required for three 
+different fuel cycle scenarios: the current fleet of U.S. reactors, 
+a no-growth transition to the \gls{USNC} \gls{MMR} \textsuperscript{TM}, 
+and a no-growth transition to the X-Energy Xe-100 Reactor\textsuperscript{TM}.
+This work also investigates the number of reactors deployed at each time 
+step, the amount of \gls{SWU} capacity to meet the enrichment supply, and 
+the amount of \gls{HEU} required for downblending for each of the fuel 
+cycle scenarios because each of these quantities is related to the 
+amount of enriched uranium.
 
 \end{block}
-
 %----------------------------------------------------------------------------------------
 %	OBJECTIVES
 %----------------------------------------------------------------------------------------
@@ -157,9 +166,12 @@ These goals will be achieved by:
 \setbeamercolor{block alerted body}{fg=black,bg=white} % Change the alert block body colors
 \begin{alertblock}{Objectives}
 \begin{itemize}
-        \item Objective 1
-	\item Objective 2
+    \item Quantify the enriched uranium requirements for three fuel cycle 
+		  scenarios
+	\item Quantify other relevant resources required in the front end of 
+		  these three scenarios
 \end{itemize}
+\gls{TRISO}
 
 \end{alertblock}
 
@@ -167,27 +179,25 @@ These goals will be achieved by:
 %	Programs
 %----------------------------------------------------------------------------------------
 
-\begin{block}{Program 1}
-Description
+\begin{block}{Reactor Data}
 
-\begin{figure}
-	\label{fig:figure_label_ex1}
-	\includegraphics[width=0.9\linewidth]{graphic_name1}
-	\caption{Caption1 Reference \cite{call_tag_article}}
-\end{figure}
-
-\end{block}
-
-\begin{block}{Program 2}
-
-Description
- 
-\begin{itemize}
-	\item{Item 1}
-	\item{Item 2}
-	\item{Item 3}
-\end{itemize}
-
+	\begin{table}
+		\caption{Reactor design specifications}
+		\label{tab:reactor_summary}
+		\begin{tabular}{c c c}
+			\hline
+			Design Criteria & \gls{USNC}\gls{MMR}\textsuperscript{TM} & 
+				X-Energy Xe-100\textsuperscript{TM} \\\hline
+			Reactor type & Modular HTGR & Modular HTGR \\
+			Power Output (MWth) & 15 & 200 \\
+			Enrichment (\% $^{235}U$) & 13 & 15.5 \\
+			Cycle Length (years) & 20 & online refuel\\
+			Fuel form & \gls{TRISO} compacts & \gls{TRISO} pebbles\\
+			Reactor Lifetime & 20 years & 60 years \\
+			Coolant & He & He \\
+			\hline
+		\end{tabular}
+	\end{table}
 \end{block}
 
 %----------------------------------------------------------------------------------------
@@ -205,65 +215,43 @@ Description
 %----------------------------------------------------------------------------------------
 
 \begin{block}{Models}
-\vspace{0.7em}
-\textbf{First Model}
-
-Description
-
-Example table 
-\begin{table}[]
-	\label{tab:table_label}
-	\caption{Table caption with citation \cite{call_tag_article}}
-	\begin{tabular}{|l|l|l|l|}
-	\hline
-	Header1 &  Header2 [Units]  &  Header3 [Units]  &  Header3 [Units]   \\ \hline
-	Item 1     & 100 & 2.5  & 2.5\\ \hline
-	Iten 2      & 100 & 2.5 & 2.5\\ \hline
-	Item 3     & 100 & 2.5  & 2.5\\ \hline
-	\end{tabular}
-\end{table}
-
-In the waste repository model, the user can define the variables: 
-	\begin{itemize}
-		\item Variable
-		\item Variable
-		\item Variable 
-		\item Variable 
-		\item Variable
-	\end{itemize}
-
-\vspace{0.7em}
-\textbf{Second Model}
-
-Description 
-
-\vspace{0.7em}
-\textbf{Third Model}
-
-Description with an example of a figure reference
-
-Figure \ref{fig:figure_label_ex1} does stuff 
+Each of the fuel cycle scenarios was modeled using \Cyclus \cite{huff_fundamental_2016},
+an agent-based fuel cycle simulator. Each non-reactor facility in the 
+scenarios was collapsed into a single agent and reactor units are represented 
+as separate agents. This allows the simulations to accurately capture the 
+deployment and decommissioning of reactor units. Figure \ref{fig:fuel_cycle}
+shows the flow materials between facilities in the simulation. 
 
 \begin{figure}
-	\label{fig:figure_label_ex2}
-	\includegraphics[width=1\linewidth]{graphic_name2}
-	\caption{Caption2 Reference \cite{call_tag_article}}
+    \centering
+    \begin{tikzpicture}[node distance=3.5cm]
+        \node (mine) [facility] {Uranium Mine};
+        \node (mill) [facility, below of=mine] {Uranium Mill};
+        \node (conversion) [facility, below of=mill] {Conversion};
+        \node (enrichment) [facility, below of=conversion]{Enrichment};
+        \node (fabrication) [facility, below of=enrichment]{Fuel Fabrication};
+        \node (reactor) [facility, below of=fabrication]{Reactor};
+        \node (wetstorage) [facility, below of=reactor]{Wet Storage};
+        \node (drystorage) [facility, below of=wetstorage]{Dry Storage};
+        \node (sinkhlw) [facility, below of=drystorage]{HLW Sink};
+        \node (sinkllw) [facility, right of=enrichment, xshift=4cm]{LLW Sink};
+
+
+        \draw [arrow] (mine) -- node[anchor=east]{Natural U} (mill); 
+        \draw [arrow] (mill) -- node[anchor=east]{U$_3$O$_8$}(conversion); 
+        \draw [arrow] (conversion) -- node[anchor=east]{UF$_6$}(enrichment);
+        \draw [arrow] (enrichment) -- node[anchor=east]{Enriched U}(fabrication);
+        \draw [arrow] (enrichment) -- node[anchor=south]{Tails}(sinkllw);
+        \draw [arrow] (fabrication) -- node[anchor=east]{Fresh UOX}(reactor);
+        \draw [arrow] (reactor) -- node[anchor=east]{Spent UOX}(wetstorage);
+        \draw [arrow] (wetstorage) -- node[anchor=east]{Cool Spent UOX}(drystorage);
+        \draw [arrow] (drystorage) -- node[anchor=east]{Casked Spent UOX}(sinkhlw);
+
+        \end{tikzpicture}
+    \caption{Fuel cycle facilities and material flow between facilities.}
+    \label{fig:fuel_cycle}
 \end{figure}
 
-Description 
-
-Equations
-\begin{align*}
-	y = x
-\end{align*}
-Description
-\begin{align*}
-	y = x
-\end{align*}
-Description
-\begin{align*}
-	y = x
-\end{align*}
 
 \end{block}
 
@@ -289,7 +277,7 @@ Description
 \begin{figure}
 	\label{fig:figure_label_ex3}
 	\includegraphics[width=0.9\linewidth]{graphic_name3}
-	\caption{Caption3 Reference \cite{call_tag_article}}
+	\caption{Caption3 Reference }
 \end{figure}
 
 \end{block}
@@ -313,7 +301,18 @@ Description
 
 \begin{block}{Acknowledgements}
 	
-	Text specific to your funding, and other acknowledgements you'd like to make
+	This material is based upon work supported under an Integrated University 
+Program Graduate Fellowship. Any opinions, findings, conclusions, or 
+recommendations expressed in this publication are those of the author(s) 
+and do not necessarily reflect the views of the Department of Energy Office 
+of Nuclear Energy.
+
+Prof. Huff is supported by the Nuclear Regulatory Commission Faculty
+Development Program (award NRC-HQ-84-14-G-0054 Program B), the Blue Waters
+sustained-petascale computing project supported by the National Science
+Foundation (awards OCI-0725070 and ACI-1238993) and the state of Illinois, the
+DOE ARPA-E MEITNER Program (award DE-AR0000983), and the DOE H2@Scale Program
+(Award Number: DE-EE0008832)
 	
 \end{block}
 
@@ -327,8 +326,8 @@ Description
 \begin{alertblock}{Contact Information}
 	\setbeamercolor{block title}{fg=norange,bg=white} % Change the block title color
 	\begin{itemize}
-		\item Email: \href{mailto:netid@illinois.edu}{netid@illinois.edu}
-		\item Phone: \href{tel:15555555555}{+1 555 555 5555}
+		\item Email: \href{mailto:amandab7@illinois.edu}{amadnab7@illinois.edu}
+		\item Phone: \href{tel:12173003132}{+1 217-300-3132}
 	\end{itemize}
 % These specific elements are optional, but you should have some method for people to contact you.	
 	
