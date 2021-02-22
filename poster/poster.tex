@@ -190,26 +190,21 @@ metrics of interest:
     \item Number of reactors
     \item Fresh fuel demand of reactors
   \end{itemize}
-\end{block}
 
-\begin{block}{Reactor Data}
+  \setbeamercolor{block alerted title}{fg=black,bg=norange} % Change the alert block title colors
+  \setbeamercolor{block alerted body}{fg=black,bg=white} % Change the alert block body colors
+  \begin{alertblock}{Model Assumptions}
+  \begin{itemize}
+      \item Reactors still operating as of Dec. 2020 operate
+        for 60 years after commercial start 
+    \item All \gls{LWR}s use the same level enrichment
+    \item No new \gls{LWR}s are deployed
+    \item Transitions begin at 2025
+  \end{itemize}
+  
+  \end{alertblock}
 
-	\begin{table}
-		\caption{Reactor design specifications}
-		\label{tab:reactor_summary}
-		\begin{tabular}{c c c}
-			\hline
-			Design Criteria & \gls{USNC} \gls{MMR}\textsuperscript{TM} & 
-				X-Energy Xe-100\textsuperscript{TM} \\\hline
-			Reactor type & Modular HTGR & Modular HTGR \\
-			Power Output (MWth) & 15 & 200 \\
-			Enrichment (\% $^{235}U$) & 13 & 15.5 \\
-			Cycle Length (years) & 20 & online refuel\\
-			Fuel form & TRISO compacts & TRISO pebbles\\
-			Reactor Lifetime & 20 years & 60 years \\
-			\hline
-		\end{tabular}
-	\end{table}
+
 \end{block}
 
 %----------------------------------------------------------------------------------------
@@ -263,18 +258,25 @@ deployment and decommissioning of reactor units.
 \end{figure}
 
 
-\setbeamercolor{block alerted title}{fg=black,bg=norange} % Change the alert block title colors
-\setbeamercolor{block alerted body}{fg=black,bg=white} % Change the alert block body colors
-\begin{alertblock}{Model Assumptions}
-\begin{itemize}
-    \item Reactors still operating as of Dec. 2020 operate
-		  for 60 years after commercial start 
-	\item All \gls{LWR}s use the same level enrichment
-	\item No new \gls{LWR}s are deployed
-	\item Transitions begin at 2025
-\end{itemize}
 
-\end{alertblock}
+Deisgn information of the advanced reactors is summarized in Table \ref{tab:reactor_summary}.
+	\begin{table}
+		\caption{Advanced Reactor design specifications}
+		\label{tab:reactor_summary}
+		\begin{tabular}{c c c}
+			\hline
+			Design Criteria & \gls{USNC} \gls{MMR}\textsuperscript{TM} 
+      \cite{mitchell_usnc_2020} & X-Energy Xe-100\textsuperscript{TM} 
+      \cite{hussain_advances_2018}\\\hline
+			Reactor type & Modular HTGR & Modular HTGR \\
+			Power (MWth) & 15 & 200 \\
+			Enrichment (\% $^{235}U$) & 13 & 15.5 \\
+			Cycle Length (years) & 20 & online refuel\\
+			Fuel form & TRISO compacts & TRISO pebbles\\
+			Reactor Lifetime & 20 years & 60 years \\
+			\hline
+		\end{tabular}
+	\end{table}
 
 \end{block}
 
