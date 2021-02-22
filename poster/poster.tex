@@ -132,30 +132,25 @@
 
 \begin{block}{Introduction}
 
-All \gls{LWR} in the current fleet of reactors dpeloyed in the United States
+The current fleet of reactors deployed in the United States use
 similar forms of \gls{LEU} enriched below 5\% $^{235}$U. Many of the 
-new reactor designs, namely those of Microreactors and \gls{SMR}, will 
-use \gls{LEU} fuel enriched between 5-20\% $^{235}$U. This difference in 
-enrichment level will require additional resources to fabricate compared to 
-the fuel for current reactors. 
+new reactor designs will 
+use \gls{LEU} fuel enriched between 5-20\% $^{235}$U or \gls{HALEU}. This 
+difference in enrichment level requires additional resources to fabricate 
+compared to the fuel for current reactors. 
 
-To meet these requirements, the U.S. \gls{DOE} has proposed two methods to 
-fabricate uranium at these higher enrichment levels: recovery and 
-downblending of \gls{HEU} or enriching natural uranium to the required 
-level \cite{griffith_overview_2020}. Each of these methods have limitations. 
-Recovery and downblending is limited by the existing physical supply of 
-\gls{HEU} and downblending capacity. Enrichment of natural uranium is 
-limited by centrifuge capacity, in terms of \gls{SWU}. 
+To meet these requirements the U.S. \gls{DOE} has proposed two methods to 
+fabricate uranium at \gls{HALEU} levels: recovery and 
+downblending of \gls{HEU} or enriching natural uranium  
+\cite{griffith_overview_2020}. Each method has limitations, such as physical
+supply of \gls{HEU} or \gls{SWU} capacity.
 
 This work investigates the supply of enriched uranium required for three 
 different fuel cycle scenarios: the current fleet of U.S. reactors, 
 a no-growth transition to the \gls{USNC} \gls{MMR} \textsuperscript{TM}, 
 and a no-growth transition to the X-Energy Xe-100 Reactor\textsuperscript{TM}.
-This work also investigates the number of reactors deployed at each time 
-step, the amount of \gls{SWU} capacity to meet the enrichment supply, and 
-the amount of \gls{HEU} required for downblending for each of the fuel 
-cycle scenarios because each of these quantities is related to the 
-amount of enriched uranium.
+This work also considers quantities related to the enriched uranium supply, 
+such as number of reactors deployed and \gls{SWU} capacity. 
 
 \end{block}
 %----------------------------------------------------------------------------------------
@@ -178,6 +173,24 @@ amount of enriched uranium.
 %----------------------------------------------------------------------------------------
 %	Programs
 %----------------------------------------------------------------------------------------
+\begin{block}{Methodology}
+Three different fuel cycle scenarios are simulated:
+  \begin{itemize}
+    \item current US fleet
+    \item transition to \gls{USNC} \gls{MMR}
+    \item transition to X-Energy Xe-100
+  \end{itemize}
+The transition scenarios assume no growth in power demand.
+
+
+Each scenario is simulated using \Cyclus \cite{huff_fundamental_2016}, an agent 
+based fuel cycle simulator. The output of each simulation is parsed for time-dependent 
+metrics of interest:
+  \begin{itemize}
+    \item Number of reactors
+    \item Fresh fuel demand of reactors
+  \end{itemize}
+\end{block}
 
 \begin{block}{Reactor Data}
 
@@ -186,7 +199,7 @@ amount of enriched uranium.
 		\label{tab:reactor_summary}
 		\begin{tabular}{c c c}
 			\hline
-			Design Criteria & \gls{USNC}\gls{MMR}\textsuperscript{TM} & 
+			Design Criteria & \gls{USNC} \gls{MMR}\textsuperscript{TM} & 
 				X-Energy Xe-100\textsuperscript{TM} \\\hline
 			Reactor type & Modular HTGR & Modular HTGR \\
 			Power Output (MWth) & 15 & 200 \\
@@ -215,12 +228,11 @@ amount of enriched uranium.
 %----------------------------------------------------------------------------------------
 
 \begin{block}{Models}
-Each of the fuel cycle scenarios was modeled using \Cyclus \cite{huff_fundamental_2016},
-an agent-based fuel cycle simulator. Each non-reactor facility in the 
+Figure \ref{fig:fuel_cycle} shows the facilities and flow of materials in 
+each of the simulations.  Each non-reactor facility in the 
 scenarios was collapsed into a single agent and reactor units are represented 
 as separate agents. This allows the simulations to accurately capture the 
-deployment and decommissioning of reactor units. Figure \ref{fig:fuel_cycle}
-shows the flow materials between facilities in the simulation. 
+deployment and decommissioning of reactor units. 
 
 \begin{figure}
     \centering
@@ -256,9 +268,10 @@ shows the flow materials between facilities in the simulation.
 \setbeamercolor{block alerted body}{fg=black,bg=white} % Change the alert block body colors
 \begin{alertblock}{Model Assumptions}
 \begin{itemize}
-    \item Reactors still operating as of Dec. 2020 are assumed to operate
+    \item Reactors still operating as of Dec. 2020 operate
 		  for 60 years after commercial start 
 	\item All \gls{LWR}s use the same level enrichment
+	\item No new \gls{LWR}s are deployed
 	\item Transitions begin at 2025
 \end{itemize}
 
@@ -277,10 +290,12 @@ shows the flow materials between facilities in the simulation.
 
 \begin{block}{Results}
 \textbf{Reactor Deployment}
-Most of the L
+Figure \ref{fig:rx_deployment} shows the number of reactors as a function of 
+time for each scenario.
+All of the \gls{LWR}s are decommissioned by 2076
 \begin{figure}
   \centering
-  \includegraphics[scale=0.45, trim=200 0 50 50, clip]{rx_deployment_2020.png}
+  \includegraphics[scale=0.65, trim=100 0 50 50, clip]{rx_deployment_2020.png}
   \caption{Number of reactors as a function of time}
   \label{fig:rx_deployment}
 \end{figure}
@@ -294,6 +309,7 @@ Most of the L
 \begin{alertblock}{Future Work }
 \begin{itemize}
 		\item Simulate transitions assuming 1\% growth in demand
+		\item Include non-\gls{HALEU} fueled reactors in the simulation
 \end{itemize}
 
 \end{alertblock}
