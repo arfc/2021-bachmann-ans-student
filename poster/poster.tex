@@ -234,26 +234,35 @@ deployment and decommissioning of reactor units.
         \node (mine) [facility] {Uranium Mine};
         \node (mill) [facility, below of=mine] {Uranium Mill};
         \node (conversion) [facility, below of=mill] {Conversion};
-        \node (enrichment) [facility, below of=conversion]{Enrichment};
-        \node (fabrication) [facility, below of=enrichment]{Fuel Fabrication};
+        \node (enrichment) [facility, below of=conversion, xshift=-5cm]{Enrichment};
+        \node (enrichment2) [transition, below of=conversion, xshift=5cm]{Enrichment};
+        \node (fabrication2) [transition, below of=enrichment2,yshift=-3cm]{Fuel Fabrication};
+        \node (fabrication) [facility, below of=enrichment, yshift=-3cm]{Fuel Fabrication};
         \node (reactor) [facility, below of=fabrication]{Reactor};
+        \node (adv_reactor) [transition, below of=fabrication2]{Advanced Reactor};
         \node (wetstorage) [facility, below of=reactor]{Wet Storage};
         \node (drystorage) [facility, below of=wetstorage]{Dry Storage};
-        \node (sinkhlw) [facility, below of=drystorage]{HLW Sink};
-        \node (sinkllw) [facility, right of=enrichment, xshift=4cm]{LLW Sink};
+        \node (sinkhlw) [facility, below of=drystorage, xshift=4cm]{HLW Sink};
+        \node (sinkllw) [facility, below of=enrichment, xshift=5cm]{LLW Sink};
 
         \draw [arrow] (mine) -- node[anchor=east]{Natural U} (mill); 
         \draw [arrow] (mill) -- node[anchor=east]{U$_3$O$_8$}(conversion); 
         \draw [arrow] (conversion) -- node[anchor=east]{UF$_6$}(enrichment);
         \draw [arrow] (enrichment) -- node[anchor=east]{Enriched U}(fabrication);
-        \draw [arrow] (enrichment) -- node[anchor=south]{Tails}(sinkllw);
+        \draw [arrow] (conversion) -- node[anchor=east]{UF$_6$}(enrichment2);
+        \draw [arrow] (enrichment2) -- node[anchor=west]{HALEU}(fabrication2);
+        \draw [arrow] (enrichment) -- node[anchor=east]{Tails}(sinkllw);
+        \draw [arrow] (enrichment2) -- node[anchor=west]{Tails}(sinkllw);
         \draw [arrow] (fabrication) -- node[anchor=east]{Fresh UOX}(reactor);
+        \draw [arrow] (fabrication2) -- node[anchor=west]{TRSIO fuel}(adv_reactor);
         \draw [arrow] (reactor) -- node[anchor=east]{Spent UOX}(wetstorage);
         \draw [arrow] (wetstorage) -- node[anchor=east]{Cool Spent UOX}(drystorage);
         \draw [arrow] (drystorage) -- node[anchor=east]{Casked Spent UOX}(sinkhlw);
+        \draw [arrow] (adv_reactor) -- node[anchor=west]{Spent TRISO Fuel}(sinkhlw);
 
         \end{tikzpicture}
-    \caption{Fuel cycle facilities and material flow between facilities.}
+    \caption{Fuel cycle facilities and material flow between facilities. Facilities in 
+    red are added in for the transition scenarios.}
     \label{fig:fuel_cycle}
 \end{figure}
 
