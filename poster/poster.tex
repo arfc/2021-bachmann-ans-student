@@ -1,386 +1,82 @@
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-% Jacobs Landscape Poster
-% LaTeX Template
-% Version 1.1 (14/06/14)
-%
-% Created by:
-% Computational Physics and Biophysics Group, Jacobs University
-% https://teamwork.jacobs-university.de:8443/confluence/display/CoPandBiG/LaTeX+Poster
-% 
-% Further modified by:
-% Nathaniel Johnston (nathaniel@njohnston.ca)
-%
-% This template has been downloaded from:
-% http://www.LaTeXTemplates.com
-%
-% License:
-% CC BY-NC-SA 3.0 (http://creativecommons.org/licenses/by-nc-sa/3.0/)
-%
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\documentclass[11pt,handout]{beamer}
+\usetheme[white]{Illinois}
+%\title[short title]{long title}
+\title[Short Title]{A Very Very Long Title for a Presentation about Cats}
+%\subtitle[short subtitle]{long subtitle}
+\subtitle[Short SubTitle]{Mostly Kittens}
+%\author[short name]{long name}
+\author[Your Name]{Your Name\\Advanced Reactors and Fuel Cycles Group}
+%\date[short date]{long date}
+\date[04.01.2100]{April 1, 2100}
+%\institution[short name]{long name}
+\institute[UIUC]{University of Illinois at Urbana-Champaign}
 
-%----------------------------------------------------------------------------------------
-%	PACKAGES AND OTHER DOCUMENT CONFIGURATIONS
-%----------------------------------------------------------------------------------------
-
-\documentclass[final]{beamer}
-
-\usepackage[scale=1.0]{beamerposter} % Use the beamerposter package for laying out the poster
-\usepackage[acronym,toc]{glossaries}
-\input{../acros}
-\usetheme{confposter} % Use the confposter theme supplied with this template
-
-\setbeamercolor{block title}{fg=dblue!80,bg=white} % Colors of the block titles
-\setbeamercolor{block body}{fg=black,bg=white} % Colors of the body of blocks
-\setbeamercolor{block alerted title}{fg=white,bg=dblue!70} % Colors of the highlighted block titles
-\setbeamercolor{block alerted body}{fg=black,bg=dblue!10} % Colors of the body of highlighted blocks
-% Many more colors are available for use in beamerthemeconfposter.sty
-
-%-----------------------------------------------------------
-% Define the column widths and overall poster size
-% To set effective sepwid, onecolwid and twocolwid values, first choose how many columns you want and how much separation you want between columns
-% In this template, the separation width chosen is 0.024 of the paper width and a 4-column layout
-% onecolwid should therefore be (1-(# of columns+1)*sepwid)/# of columns e.g. (1-(4+1)*0.024)/4 = 0.22
-% onecolwid should therefore be (1-(# of columns+1)*sepwid)/# of columns e.g. 
-% (1-(3+1)*0.025)/3 = 0.3
-% Set twocolwid to be (2*onecolwid)+sepwid = 0.464
-% Set threecolwid to be (3*onecolwid)+2*sepwid = 0.708
-
-\newlength{\sepwid}
-\newlength{\onecolwid}
-\newlength{\twocolwid}
-\newlength{\threecolwid}
-\setlength{\paperwidth}{36in} % A0 width: 46.8in
-\setlength{\paperheight}{48in} % A0 height: 33.1in
-\setlength{\textwidth}{34in} % A0 width: 46.8in
-\setlength{\textheight}{46in} % A0 height: 33.1in
-\setlength{\sepwid}{0.025\paperwidth} % Separation width (white space) between columns
-\setlength{\onecolwid}{0.3\paperwidth} % Width of one column
-\setlength{\twocolwid}{0.625\paperwidth} % Width of two columns
-\setlength{\threecolwid}{0.95\paperwidth} % Width of three columns
-\setlength{\topmargin}{-0.5in} % Reduce the top margin size
-%-----------------------------------------------------------
-
-\usepackage{graphicx}  % Required for including images
-\newcommand{\Cyclus}{\textsc{Cyclus}\xspace}%
-\usepackage{tabularx}
-\newcolumntype{b}{X}
-\newcolumntype{s}{>{\hsize=.5\hsize}X}
-\newcolumntype{m}{>{\hsize=.75\hsize}X}
-\newcolumntype{z}{>{\hsize=.65\hsize}X}
-
-\usepackage{booktabs} % Top and bottom rules for tables
-\usepackage{xspace}
+%\usepackage{bbding}
+\usepackage{amsfonts}
 \usepackage{amsmath}
-\usepackage{exscale}
-\usepackage{tikz}
-\usetikzlibrary{shapes.geometric, arrows}
-\usetikzlibrary{positioning, arrows, decorations, shapes}
+\usepackage{xspace}
+\usepackage{graphicx}
+\usepackage{subfigure}
+\usepackage{booktabs} % nice rules for tables
+\usepackage{microtype} % if using PDF
+\usepackage{bigints}
+%\usepackage{minted}
 
-\tikzstyle{facility} = [rectangle, rounded corners, minimum width=2cm, minimum height=0.75cm,text centered, draw=black, fill=blue!30]
-\tikzstyle{transition} = [rectangle, rounded corners, minimum width=2cm, minimum height=0.75cm,text centered, draw=black, fill=red!30]
-\tikzstyle{arrow} = [thick,->,>=stealth]
-
+\newcommand{\units}[1] {\:\text{#1}}%
+\newcommand{\SN}{S$_N$}%{S$_\text{N}$}%{$S_N$}%
+\DeclareMathOperator{\erf}{erf}
+%I need some complimentary error funcitons... 
+\DeclareMathOperator{\erfc}{erfc}
+%Those icons in the references are terrible looking
 \setbeamertemplate{bibliography item}[text]
 
-%----------------------------------------------------------------------------------------
-%	TITLE SECTION 
-%----------------------------------------------------------------------------------------
+%%%% Acronym support
 
-\title{%
-  \texorpdfstring{%
-    \makebox[\linewidth]{%
-      \makebox[0pt][l]{%
-        \raisebox{\dimexpr-\height+\baselineskip}[0pt][0pt]
-          {\includegraphics[height=2.5\baselineskip]{UIUC_Logo}}% Left logo
-      }\hfill
-      \makebox[0pt]{Enriched Uranium Supply Requirements}%
-      \hfill\makebox[0pt][r]{%
-        \raisebox{\dimexpr-\height+\baselineskip}[0pt][0pt]
-          {\includegraphics[height=3.3\baselineskip]{arfc_atom}}% Right logo
-      }%
-    }%
-  }
-  % To make a title with two lines, remove the "%" from the following two lines 
-  {Enriched Uranium Supply Requirements}
-  {for the Transition to Advanced Reactors}
-  {\vspace{1cm}}
-  } % Poster title
+\usepackage[acronym,toc]{glossaries}
+\include{acros}
 
-\author{\textbf{Amanda M. Bachmann}, Kathryn D. Huff}
-\institute{University of Illinios at Urbana-Champaign, Department of Nuclear, Plasma, and Radiological Engineering, Urbana, IL 61801}
-%----------------------------------------------------------------------------------------
+\makeglossaries
 
+%try to get rid of header on title page\dots
+\makeatletter
+    \newenvironment{withoutheadline}{
+        \setbeamertemplate{headline}[default]
+        \def\beamer@entrycode{\vspace*{-\headheight}}
+    }{}
+\makeatother
+
+\makeatother
+\setbeamertemplate{footline}
+{
+  \leavevmode%
+  \hbox{%
+    \rightline{\insertframenumber{} / \inserttotalframenumber\hspace*{1ex}}
+  }%
+  \vskip0pt%
+}
+\makeatletter
 \begin{document}
-
-\addtobeamertemplate{block end}{}{\vspace*{2ex}} % White space under blocks
-\addtobeamertemplate{block alerted end}{}{\vspace*{2ex}} % White space under highlighted (alert) blocks
-
-\setlength{\belowcaptionskip}{2ex} % White space under figures
-\setlength\belowdisplayshortskip{2ex} % White space under equations
-
-\begin{frame}[t] % The whole poster is enclosed in one beamer frame
-
-\begin{columns}[t,totalwidth=\threecolwid] % The whole poster consists of three major columns, the second of which is split into two columns twice - the [t] option aligns each column's content to the top
-
-\begin{column}{0.5\sepwid}\end{column} % Empty spacer column
-
-\begin{column}{\onecolwid} % The first column
-
-%----------------------------------------------------------------------------------------
-%	INTRODUCTION
-%----------------------------------------------------------------------------------------
-
-\begin{block}{Introduction}
-
-The current fleet of reactors deployed in the United States use
-similar forms of \gls{LEU} enriched below 5\% $^{235}$U. Many of the 
-new reactor designs will 
-use \gls{LEU} fuel enriched between 5-20\% $^{235}$U or \gls{HALEU}. This 
-difference in enrichment level requires additional resources to fabricate 
-compared to the fuel for current reactors. 
-
-To meet these requirements, the U.S. \gls{DOE} has proposed two methods to 
-fabricate uranium at \gls{HALEU} levels: recovery and 
-downblending of \gls{HEU} or enriching natural uranium  
-\cite{griffith_overview_2020}. Each method has limitations, such as physical
-supply of \gls{HEU} or \gls{SWU} capacity.
-
-This work investigates the supply of enriched uranium required for three 
-different fuel cycle scenarios: the current fleet of U.S. reactors, 
-a no-growth transition to the \gls{USNC} \gls{MMR} \textsuperscript{TM}, 
-and a no-growth transition to the X-Energy Xe-100 Reactor\textsuperscript{TM}.
-This work also considers quantities related to the enriched uranium supply, 
-such as number of reactors deployed and \gls{SWU} capacity. 
-
-\end{block}
-%----------------------------------------------------------------------------------------
-%	OBJECTIVES
-%----------------------------------------------------------------------------------------
-
-%This section creates an orange border around a white box
-\setbeamercolor{block alerted title}{fg=black,bg=norange} % Change the alert block title colors
-\setbeamercolor{block alerted body}{fg=black,bg=white} % Change the alert block body colors
-\begin{alertblock}{Objectives}
-\begin{itemize}
-    \item Quantify the enriched uranium requirements for three fuel cycle 
-		  scenarios
-	\item Quantify other relevant resources required in the front end of 
-		  these three scenarios
-\end{itemize}
-
-\end{alertblock}
-
-%----------------------------------------------------------------------------------------
-%	Programs
-%----------------------------------------------------------------------------------------
-\begin{block}{Methodology}
-Three different fuel cycle scenarios are simulated:
-  \begin{itemize}
-    \item Current US fleet
-    \item Transition to \gls{USNC} \gls{MMR}
-    \item Transition to X-Energy Xe-100
-  \end{itemize}
-The transition scenarios assume no growth in power demand.
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%% From uw-beamer Here's a handy bit of code to place at 
+%% the beginning of your presentation (after \begin{document}):
+\newcommand*{\alphabet}{ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz}
+\newlength{\highlightheight}
+\newlength{\highlightdepth}
+\newlength{\highlightmargin}
+\setlength{\highlightmargin}{2pt}
+\settoheight{\highlightheight}{\alphabet}
+\settodepth{\highlightdepth}{\alphabet}
+\addtolength{\highlightheight}{\highlightmargin}
+\addtolength{\highlightdepth}{\highlightmargin}
+\addtolength{\highlightheight}{\highlightdepth}
+\newcommand*{\Highlight}{\rlap{\textcolor{HighlightBackground}{\rule[-\highlightdepth]{\linewidth}{\highlightheight}}}}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%--------------------------------%%
 
 
-Each scenario is simulated using \Cyclus \cite{huff_fundamental_2016}, an agent 
-based fuel cycle simulator. The output of each simulation is parsed for time-dependent 
-metrics of interest:
-  \begin{itemize}
-    \item Number of reactors
-    \item Fresh fuel demand of reactors
-  \end{itemize}
+%%--------------------------------%%
 
-  \setbeamercolor{block alerted title}{fg=black,bg=norange} % Change the alert block title colors
-  \setbeamercolor{block alerted body}{fg=black,bg=white} % Change the alert block body colors
-  \begin{alertblock}{Model Assumptions}
-  \begin{itemize}
-      \item Reactors still operating as of Dec. 2020 operate
-        for 60 years after commercial start 
-    \item All \gls{LWR}s use the same level enrichment
-    \item No new \gls{LWR}s are deployed
-    \item Transitions begin at 2025
-  \end{itemize}
-  
-  \end{alertblock}
+\input{slides}
 
-
-\end{block}
-
-%----------------------------------------------------------------------------------------
-
-\end{column} % End of the first column
-
-\begin{column}{\sepwid}\end{column} % Empty spacer column
-
-
-%----------------------------------------------------------------------------------------
-
-\begin{column}{\onecolwid} % The second column
-%----------------------------------------------------------------------------------------
-%	MODELS
-%----------------------------------------------------------------------------------------
-
-\begin{block}{Models}
-Figure \ref{fig:fuel_cycle} shows the facilities and flow of materials in 
-each of the simulations.  Each non-reactor facility in the 
-scenarios was collapsed into a single agent, and reactor units are represented 
-as separate agents. This allows the simulations to accurately capture the 
-deployment and decommissioning of reactor units. 
-
-\begin{figure}
-    \centering
-    \begin{tikzpicture}[node distance=3.5cm]
-        \node (mine) [facility] {Uranium Mine};
-        \node (mill) [facility, below of=mine] {Uranium Mill};
-        \node (conversion) [facility, below of=mill] {Conversion};
-        \node (enrichment) [facility, below of=conversion, xshift=-5cm]{Enrichment};
-        \node (enrichment2) [transition, below of=conversion, xshift=5cm]{Enrichment};
-        \node (fabrication2) [transition, below of=enrichment2,yshift=-3cm]{Fuel Fabrication};
-        \node (fabrication) [facility, below of=enrichment, yshift=-3cm]{Fuel Fabrication};
-        \node (reactor) [facility, below of=fabrication]{Reactor};
-        \node (adv_reactor) [transition, below of=fabrication2]{Advanced Reactor};
-        \node (wetstorage) [facility, below of=reactor]{Wet Storage};
-        \node (drystorage) [facility, below of=wetstorage]{Dry Storage};
-        \node (sinkhlw) [facility, below of=drystorage, xshift=4cm]{HLW Sink};
-        \node (sinkllw) [facility, below of=enrichment, xshift=5cm]{LLW Sink};
-
-        \draw [arrow] (mine) -- node[anchor=east]{Natural U} (mill); 
-        \draw [arrow] (mill) -- node[anchor=east]{U$_3$O$_8$}(conversion); 
-        \draw [arrow] (conversion) -- node[anchor=east]{UF$_6$}(enrichment);
-        \draw [arrow] (enrichment) -- node[anchor=east]{Enriched U}(fabrication);
-        \draw [arrow] (conversion) -- node[anchor=east]{UF$_6$}(enrichment2);
-        \draw [arrow] (enrichment2) -- node[anchor=west]{HALEU}(fabrication2);
-        \draw [arrow] (enrichment) -- node[anchor=east]{Tails}(sinkllw);
-        \draw [arrow] (enrichment2) -- node[anchor=west]{Tails}(sinkllw);
-        \draw [arrow] (fabrication) -- node[anchor=east]{Fresh UOX}(reactor);
-        \draw [arrow] (fabrication2) -- node[anchor=west]{TRSIO fuel}(adv_reactor);
-        \draw [arrow] (reactor) -- node[anchor=east]{Spent UOX}(wetstorage);
-        \draw [arrow] (wetstorage) -- node[anchor=east]{Cool Spent UOX}(drystorage);
-        \draw [arrow] (drystorage) -- node[anchor=east]{Casked Spent UOX}(sinkhlw);
-        \draw [arrow] (adv_reactor) -- node[anchor=west]{Spent TRISO Fuel}(sinkhlw);
-
-        \end{tikzpicture}
-    \caption{Fuel cycle facilities and material flow between facilities. Facilities in 
-    red are added in for the transition scenarios.}
-    \label{fig:fuel_cycle}
-\end{figure}
-
-
-
-Design information of the advanced reactors is summarized in Table \ref{tab:reactor_summary}.
-	\begin{table}
-		\caption{Advanced Reactor design specifications}
-		\label{tab:reactor_summary}
-		\begin{tabular}{c c c}
-			\hline
-			Design Criteria & \gls{USNC} \gls{MMR}\textsuperscript{TM} 
-      \cite{mitchell_usnc_2020} & X-Energy Xe-100\textsuperscript{TM} 
-      \cite{hussain_advances_2018}\\\hline
-			Reactor type & Modular HTGR & Modular HTGR \\
-			Power (MWth) & 15 & 200 \\
-			Enrichment (\% $^{235}U$) & 13 & 15.5 \\
-			Cycle Length (years) & 20 & online refuel\\
-			Fuel form & TRISO compacts & TRISO pebbles\\
-			Reactor Lifetime & 20 years & 60 years \\
-			\hline
-		\end{tabular}
-	\end{table}
-
-\end{block}
-
-
-%----------------------------------------------------------------------------------------
-
-\end{column} % End of column 2
-
-\begin{column}{\sepwid}\end{column} % Empty spacer column
-
-\begin{column}{\onecolwid} % The third column
-
-\begin{block}{Results}
-\textbf{Reactor Deployment}
-Figure \ref{fig:rx_deployment} shows the number of reactors as a function of 
-time for each scenario.
-All of the \gls{LWR}s are decommissioned by 2076.
-\begin{figure}
-  \centering
-  \includegraphics[scale=0.65, trim=100 0 50 50, clip]{rx_deployment_2020.png}
-  \caption{Number of reactors as a function of time}
-  \label{fig:rx_deployment}
-\end{figure}
-
-
-\end{block}
-
-% This section creates an box with an orange border and a white background
-\setbeamercolor{block alerted title}{fg=black,bg=norange} % Change the alert block title colors
-\setbeamercolor{block alerted body}{fg=black,bg=white} % Change the alert block body colors
-\begin{alertblock}{Future Work }
-\begin{itemize}
-		\item Simulate transitions assuming 1\% growth in demand
-		\item Include non-\gls{HALEU} fueled reactors in the simulation
-\end{itemize}
-
-\end{alertblock}
-
-
-%----------------------------------------------------------------------------------------
-%	ACKNOWLEDGEMENTS
-%----------------------------------------------------------------------------------------
-
-\setbeamercolor{block title}{fg=norange,bg=white} % Change the block title color
-
-\begin{block}{Acknowledgements}
-	
-	This material is based upon work supported under an Integrated University 
-Program Graduate Fellowship. Any opinions, findings, conclusions, or 
-recommendations expressed in this publication are those of the author(s) 
-and do not necessarily reflect the views of the Department of Energy Office 
-of Nuclear Energy.
-
-Prof. Huff is supported by the Nuclear Regulatory Commission Faculty
-Development Program (award NRC-HQ-84-14-G-0054 Program B), the Blue Waters
-sustained-petascale computing project supported by the National Science
-Foundation (awards OCI-0725070 and ACI-1238993) and the state of Illinois, the
-DOE ARPA-E MEITNER Program (award DE-AR0000983), and the DOE H2@Scale Program
-(Award Number: DE-EE0008832)
-	
-\end{block}
-
-%----------------------------------------------------------------------------------------
-%	CONTACT INFORMATION
-%----------------------------------------------------------------------------------------
-
-\setbeamercolor{block alerted title}{fg=white,bg=dblue} % Change the alert block title colors
-\setbeamercolor{block alerted body}{fg=black,bg=white} % Change the alert block body colors
-
-\begin{alertblock}{Contact Information}
-	\setbeamercolor{block title}{fg=norange,bg=white} % Change the block title color
-	\begin{itemize}
-		\item Email: \href{mailto:amandab7@illinois.edu}{amandab7@illinois.edu}
-		\item Phone: \href{tel:12173003132}{+1 217-300-3132}
-	\end{itemize}
-% These specific elements are optional, but you should have some method for people to contact you.	
-	
-\end{alertblock}
-
-\begin{block}{References}
-
-	{\footnotesize\bibliographystyle{abbrv} 
-	\bibliography{poster}}
-\end{block}
-
-
-%----------------------------------------------------------------------------------------
-
-
-
-\end{column} % End of the third column
-
-\end{columns} % End of all the columns in the poster
-
-\end{frame} % End of the enclosing frame
 
 \end{document}
-\begin{column}{\sepwid}\end{column} % Empty spacer column
