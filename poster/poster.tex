@@ -1,4 +1,4 @@
-\documentclass[11pt,handout]{beamer}
+\documentclass[10pt,handout]{beamer}
 \usetheme[white]{Illinois}
 %\title[short title]{long title}
 \title[Short Title]{A Very Very Long Title for a Presentation about Cats}
@@ -24,6 +24,8 @@
 
 \newcommand{\units}[1] {\:\text{#1}}%
 \newcommand{\SN}{S$_N$}%{S$_\text{N}$}%{$S_N$}%
+\newcommand{\Cyclus}{\textsc{Cyclus}\xspace} %
+\newcommand{\Cycamore}{\textsc{Cycamore}\xspace} %
 \DeclareMathOperator{\erf}{erf}
 %I need some complimentary error funcitons... 
 \DeclareMathOperator{\erfc}{erfc}
@@ -33,7 +35,15 @@
 %%%% Acronym support
 
 \usepackage[acronym,toc]{glossaries}
-\include{acros}
+\input{../acros}
+
+\usepackage{tikz}
+\usetikzlibrary{shapes.geometric, arrows}
+\usetikzlibrary{positioning, arrows, decorations, shapes}
+
+\tikzstyle{facility} = [rectangle, rounded corners, minimum width=0.5cm, minimum height=0.3cm,text centered, draw=black, fill=blue!30]
+\tikzstyle{transition} = [rectangle, rounded corners, minimum width=0.5cm, minimum height=0.3cm,text centered, draw=black, fill=red!30]
+\tikzstyle{arrow} = [thick,->,>=stealth]
 
 \makeglossaries
 
