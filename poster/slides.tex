@@ -7,7 +7,8 @@
         demand?
 
         \begin{block}{Procedure}
-            Modeled three fuel cycle scenarios using \Cyclus
+            Modeled three fuel cycle scenarios using \Cyclus. Simulations 
+            model materials from mine to final disposal
             \begin{itemize}
                 \item Scenario 1: Current fleet of \glspl{LWR}
                 \item Scenario 2: No growth transition to \gls{USNC} \gls{MMR}
@@ -16,46 +17,25 @@
  
         \end{block}
         
-        \column[t]{6cm}
-        \begin{figure}[t]
-            \begin{center}
-            \begin{tikzpicture}[node distance=0.7cm, scale=0.8]
-                \node (mine) [facility] {\tiny Uranium Mine};
-                \node (mill) [facility, below of=mine] {\tiny  Uranium Mill};
-                \node (conversion) [facility, below of=mill] {\tiny  Conversion};
-                \node (enrichment) [facility, below of=conversion, xshift=-1.5cm]{\tiny Enrichment};
-                \node (enrichment2) [transition, below of=conversion, xshift=1.5cm]{\tiny  Enrichment};
-                \node (fabrication2) [transition, below of=enrichment2,yshift=-0.75cm]{\tiny Fuel Fabrication};
-                \node (fabrication) [facility, below of=enrichment, yshift=-0.75cm]{\tiny Fuel Fabrication};
-                \node (reactor) [facility, below of=fabrication]{\tiny Reactor};
-                \node (adv_reactor) [transition, below of=fabrication2]{\tiny Advanced Reactor};
-                \node (wetstorage) [facility, below of=reactor]{\tiny  Wet Storage};
-                \node (drystorage) [facility, below of=wetstorage]{\tiny Dry Storage};
-                \node (sinkhlw) [facility, below of=drystorage, xshift=1.5cm]{\tiny  HLW Sink};
-                \node (sinkllw) [facility, below of=enrichment, xshift=1.5cm]{\tiny  LLW Sink};
-        
-                \draw [arrow] (mine) -- node[anchor=east]{\tiny Natural U} (mill); 
-                \draw [arrow] (mill) -- node[anchor=east]{\tiny U$_3$O$_8$}(conversion); 
-                \draw [arrow] (conversion) -- node[anchor=east]{\tiny UF$_6$}(enrichment);
-                \draw [arrow] (enrichment) -- node[anchor=east]{\tiny Enriched U}(fabrication);
-                \draw [arrow] (conversion) -- node[anchor=east]{\tiny UF$_6$}(enrichment2);
-                \draw [arrow] (enrichment2) -- node[anchor=west]{\tiny HALEU}(fabrication2);
-                \draw [arrow] (enrichment) -- node[anchor=east]{\tiny Tails}(sinkllw);
-                \draw [arrow] (enrichment2) -- node[anchor=west]{\tiny Tails}(sinkllw);
-                \draw [arrow] (fabrication) -- node[anchor=east]{\tiny Fresh UOX}(reactor);
-                \draw [arrow] (fabrication2) -- node[anchor=west]{\tiny TRSIO fuel}(adv_reactor);
-                \draw [arrow] (reactor) -- node[anchor=east]{\tiny Spent UOX}(wetstorage);
-                \draw [arrow] (wetstorage) -- node[anchor=east]{\tiny Cool Spent UOX}(drystorage);
-                \draw [arrow] (drystorage) -- node[anchor=east]{\tiny Casked Spent UOX}(sinkhlw);
-                \draw [arrow] (adv_reactor) -- node[anchor=west]{\tiny Spent TRISO Fuel}(sinkhlw);
-        
-            \end{tikzpicture}
-            \caption{Material flow of fuel cycle scenarios}
-            \label{fig:fuel_cycle}
-            \end{center}
-        \end{figure}
-        
-
+        \column[t]{5cm}
+        \begin{table}[t!]
+            \tiny
+            \caption{Mico-reactor design specifications}
+            \label{tab:reactor_summary}
+            \begin{tabular}{ p{1.25cm} p{1.25cm} p{1.25cm}}
+                \hline
+                Design Criteria & \gls{USNC} \gls{MMR}\textsuperscript{TM} & 
+                    X-Energy Xe-100\textsuperscript{TM} \\\hline
+                Reactor type & Modular HTGR & Modular HTGR \\
+                Power Output (MWth) & 15 & 200 \\
+                Enrichment (\% $^{235}U$) & 13 & 15.5 \\
+                Cycle Length (years) & 20 & online refuel\\
+                Fuel form & TRISO compacts & TRISO pebbles\\
+                Reactor Lifetime & 20 years & 60 years \\
+                Coolant & He & He \\
+                \hline
+            \end{tabular}
+        \end{table}   
   \end{columns}
         
 \end{frame}
@@ -64,32 +44,28 @@
 \frametitle{Results}
     \begin{columns}
         \column[t]{5cm}
-        \begin{figure}[t]
+        \begin{figure}[t!]
             \includegraphics[scale=0.26, trim=0 5 0 10,clip]{figures/energy_all.png}
             \caption{Total Energy output of each scenario}
             \label{fig:energy}
         \end{figure}
-        \begin{figure}[ht]
+        \begin{figure}[h]
             \includegraphics[scale=0.26, trim=0 5 0 10,clip]{figures/rx_deployment_all.png}
             \caption{Total Energy output of each scenario}
             \label{fig:ex_deployment}
         \end{figure}
 
         \column[t]{5cm}
-    \begin{figure}[ht]
-        \includegraphics[scale=0.25,trim=0 5 0 10,clip]{figures/enrichedU_all.png}
+    \begin{figure}[t]
+        \includegraphics[scale=0.25,trim=0 5 0 10,clip]{figures/enrichedU_advancedrx.png}
         \caption{Total Energy output of each scenario}
         \label{fig:enrichedU}
     \end{figure}
-    \begin{figure}[ht]
+    \begin{figure}[h]
         \includegraphics[scale=0.25,trim=0 5 0 10,clip]{figures/swu_all.png}
         \caption{Total Energy output of each scenario}
         \label{fig:swu}
     \end{figure}
-    
-        
-        
-
     \end{columns}
 
 
@@ -98,8 +74,11 @@
 \begin{frame}
 \frametitle{Conclusions}
     \begin{itemize}
-        \item Scenario 2 required a higher mass of \gls{HALEU}
-        \item Scenario 3 required more \gls{SWU}
+        \item Neither of the transition scenarios meet the desired power level
+        \item Scenario 2 requires a higher mass of \gls{HALEU}
+        \item Scenario 3 requires more \gls{SWU}
+        \item Scenario 3 involves a large increase in enriched uranium when 
+              new reactors are built
     \end{itemize}
 
     \begin{block}{Ongoing Work}
@@ -108,7 +87,6 @@
             \item Simulate growth transition scenarios
             \item Include other reactor types
         \end{itemize}
-        
     \end{block}
     
 
