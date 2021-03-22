@@ -64,23 +64,30 @@
 \frametitle{Results}
     \begin{columns}
         \column[t]{5cm}
-        \begin{figure}
-            \includegraphics[scale=0.35]{figures/energy_all.png}
+        \begin{figure}[t]
+            \includegraphics[scale=0.26, trim=0 5 0 10,clip]{figures/energy_all.png}
             \caption{Total Energy output of each scenario}
             \label{fig:energy}
         \end{figure}
+        \begin{figure}[ht]
+            \includegraphics[scale=0.26, trim=0 5 0 10,clip]{figures/rx_deployment_all.png}
+            \caption{Total Energy output of each scenario}
+            \label{fig:ex_deployment}
+        \end{figure}
 
         \column[t]{5cm}
-        \begin{figure}[ht]
-            \includegraphics[scale=0.35,height=30mm]{figures/rx_deployment_all.png}
-            %\caption{Total Energy output of each scenario}
-            %\label{fig:energy}
-        \end{figure}
-        \begin{figure}[ht]
-            \includegraphics[scale=0.35,height=30mm]{figures/rx_deployment_all.png}
-            %\caption{Total Energy output of each scenario}
-            %\label{fig:energy}
-        \end{figure}
+    \begin{figure}[ht]
+        \includegraphics[scale=0.25,trim=0 5 0 10,clip]{figures/enrichedU_all.png}
+        \caption{Total Energy output of each scenario}
+        \label{fig:enrichedU}
+    \end{figure}
+    \begin{figure}[ht]
+        \includegraphics[scale=0.25,trim=0 5 0 10,clip]{figures/swu_all.png}
+        \caption{Total Energy output of each scenario}
+        \label{fig:swu}
+    \end{figure}
+    
+        
         
 
     \end{columns}
@@ -89,6 +96,20 @@
 \end{frame}
 
 \begin{frame}
-\frametitle{Results}
+\frametitle{Conclusions}
+    \begin{itemize}
+        \item Scenario 2 required a higher mass of \gls{HALEU}
+        \item Scenario 3 required more \gls{SWU}
+    \end{itemize}
+
+    \begin{block}{Ongoing Work}
+        \begin{itemize}
+            \item Adjust feed inventory for enrichment facilities
+            \item Simulate growth transition scenarios
+            \item Include other reactor types
+        \end{itemize}
+        
+    \end{block}
+    
 
 \end{frame}
